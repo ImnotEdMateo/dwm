@@ -1,4 +1,4 @@
-#include  /* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
 
 /* appearance */
 static const unsigned int borderpx  = 1;        /* border pixel of windows */
@@ -60,7 +60,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *clipboardcmd[] = { 
 	"sh", "-c", 
-	"greenclip print | grep . | dmenu -l 0 -m $0 -fn $1 -nb $2 -nf $3 -sb $4 -sf $5 | xargs -r -d'\n' -I '{}' ~/.local/bin/paste_modi.sh '{}'", 
+	"greenclip print | grep . | dmenu -l 0 -m $0 -fn $1 -nb $2 -nf $3 -sb $4 -sf $5 | xargs -r -d'\n' -I '{}' paste_modi.sh '{}'", 
 	dmenumon, dmenufont, col_gray1, col_gray3, col_cyan, col_gray3, NULL 
 };
 static const char *dmenucmd[] = { 
@@ -117,7 +117,7 @@ static const Key keys[] = {
 	{ 0,                            XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl set 10%-") },
 
 	/* Screenshots */
-	{ 0,                            XK_Print, spawn, SHCMD("scrot -e 'mv $f ~/Imágenes/SCREENSHOTS/ && xclip -selection clipboard -target image/png -i ~/Imágenes/SCREENSHOTS/$f'") },
+  { 0,                            XK_Print, spawn, SHCMD("DIR=$(xdg-user-dir PICTURES)/SCREENSHOTS && mkdir -p \"$DIR\" && scrot -e \"mv \\$f '$DIR/' && xclip -selection clipboard -target image/png -i '$DIR/\\$f'\"") },
 	{ 0|ControlMask,                XK_Print, spawn, SHCMD("scrot -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'") },
 };
 
