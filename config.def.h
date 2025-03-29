@@ -60,7 +60,7 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *clipboardcmd[] = { 
 	"sh", "-c", 
-	"greenclip print | grep . | dmenu -l 0 -m $0 -fn $1 -nb $2 -nf $3 -sb $4 -sf $5 | xargs -r -d'\n' -I '{}' paste_modi.sh '{}'", 
+	"greenclip print | grep . | dmenu -l 0 -m $0 -fn $1 -nb $2 -nf $3 -sb $4 -sf $5 | xargs -r -d'\n' -I '{}' $HOME/.local/bin/paste_modi.sh '{}'", 
 	dmenumon, dmenufont, col_gray1, col_gray3, col_cyan, col_gray3, NULL 
 };
 static const char *dmenucmd[] = { 
