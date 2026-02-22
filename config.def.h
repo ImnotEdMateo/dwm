@@ -1,3 +1,5 @@
+/* See LICENSE file for copyright and license details. */
+
 #include <X11/XF86keysym.h>
 
 /* appearance */
@@ -6,18 +8,16 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "FiraCodeNerdFont-SemiBold:size=10" };
-static const char dmenufont[]       = { "FiraCodeNerdFont-SemiBold:size=10" };
-
+static const char dmenufont[]       = "FiraCodeNerdFont-SemiBold:size=10";
 static const char col_gray1[]       = "#1d2021";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#ebdbb2";
+static const char col_gray2[]       = "#504945";
+static const char col_gray3[]       = "#fbf1c7";
 static const char col_gray4[]       = "#d79921";
 static const char col_cyan[]        = "#488588";
-
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_gray1, col_cyan  },
+	[SchemeSel]  = { col_gray4, col_gray1,  col_cyan  },
 };
 
 /* tagging */
@@ -29,8 +29,8 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	{ "Olive",     NULL,       NULL,       0,            1,           -1 },
+	{ "librewolf",  NULL,       NULL,       1 << 0,       0,           -1 },
 };
 
 /* layout(s) */
@@ -38,11 +38,12 @@ static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] 
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+static const int refreshrate = 120;  /* refresh rate (per second) for client move/resize */
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
 	{ "[]",      tile },    /* first entry is default */
-	{ "[M]",     monocle },
+	{ "[M]",      monocle },
 };
 
 /* key definitions */
@@ -130,3 +131,4 @@ static const Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
+
