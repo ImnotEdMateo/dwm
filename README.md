@@ -1,3 +1,12 @@
+![dwm](dwm.png)
+
+## Installed Patches
+
+- [status2d](https://dwm.suckless.org/patches/status2d/)
+
+## Original README 
+
+```txt
 dwm - dynamic window manager
 ============================
 dwm is an extremely fast, small, and dynamic window manager for X.
@@ -46,3 +55,4 @@ Configuration
 -------------
 The configuration of dwm is done by creating a custom config.h
 and (re)compiling the source code.
+```
